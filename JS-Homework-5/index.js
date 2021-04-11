@@ -43,12 +43,8 @@ let mentor = {
       return this.name + " " + this.surname + " " + middleName;
     }
     showCourse() {
-      let course = 2021 - this.year;
-      if (course >= 1 && course <= 6) {
-        return course;
-      } else {
-        return "You aren't a student";
-      }
+      let course = new Date().getFullYear();
+    return course - this.year;
     }
   }
   let stud1 = new Student("Petro", "Petrenko", 2015);
@@ -69,57 +65,132 @@ let mentor = {
     showSalaryWithExperience() {
       return this.showSalary() * this.#experience;
     }
-    get experience() {
+    get showExp() {
       return this.#experience;
     }
-    set experience(experience) {
+    set setExp(experience) {
       return (this.#experience = experience);
     }
   }
-  
+  //worker1
   let worker1 = new Worker("John Johnson", 20, 23);
-  let worker2 = new Worker("Tom Tomson", 48, 22);
-  let worker3 = new Worker("Andy Ander", 29, 23);
+  console.log(worker1.fullName);
+  worker1.showSalary();
+  console.log(worker1.fullName + " salary: " + worker1.showSalary());
+  console.log("New experience: " + worker1.showExp);
   
-  // array with workers
-  function receiveWorkers() {
-    let arr = [];
-    for (let i = 0; i < arguments.length; i++) {
-      arr.push(arguments[i]);
-    }
-    arr.forEach(function (worker) {
-      console.log("\n" + worker.fullName);
-      console.log(worker.fullName + " salary: " + worker.showSalary());
-      console.log("New experince " + worker.experience);
-      console.log(
-        worker.fullName + " salary: " + worker.showSalaryWithExperience()
-      );
-      worker.experience = 1.5;
-      console.log("New experince " + worker.experience);
-      console.log(
-        worker.fullName + " salary: " + worker.showSalaryWithExperience()
-      );
-    });
-  }
-  console.log(receiveWorkers(worker1, worker2, worker3));
-  
-  function sortWorkersRate() {
-    let arrRate = [];
-  
-    for (let i = 0; i < arguments.length; i++) {
-      arrRate.push([
-        arguments[i].fullName,
-        arguments[i].showSalaryWithExperience(),
-      ]);
-    }
-    return arrRate
-      .sort(function (a, b) {
-        return a[1] - b[1];
-      })
-      .join("\n");
-  }
   console.log(
-    "Sorted salary:" + "\n" + sortWorkersRate(worker1, worker2, worker3)
+    worker1.fullName + " salary: " + worker1.showSalaryWithExperience()
   );
+  worker1.showSalaryWithExperience();
   
-  //task 5
+  worker1.setExp = 1.5;
+  console.log("New experience: " + worker1.showExp);
+  
+  console.log(
+    worker1.fullName + " salary: " + worker1.showSalaryWithExperience()
+  );
+  worker1.showSalaryWithExperience();
+  
+  //Worker2
+  let worker2 = new Worker("Tom Tomson ", 48, 22);
+  console.log(worker2.fullName);
+  worker2.showSalary();
+  console.log(worker2.fullName + " salary: " + worker2.showSalary());
+  console.log("New experience: " + worker2.showExp);
+  
+  console.log(
+    worker2.fullName + " salary: " + worker2.showSalaryWithExperience()
+  );
+  worker2.showSalaryWithExperience();
+  
+  worker2.setExp = 1.5;
+  console.log("New experience: " + worker2.showExp);
+  
+  console.log(
+    worker2.fullName + " salary: " + worker2.showSalaryWithExperience()
+  );
+  worker2.showSalaryWithExperience();
+  
+  //worker3
+  let worker3 = new Worker("Andy Ander", 29, 23);
+  console.log(worker3.fullName);
+  worker3.showSalary();
+  console.log(worker3.fullName + " salary: " + worker3.showSalary());
+  console.log("New experience: " + worker3.showExp);
+  
+  console.log(
+    worker3.fullName + " salary: " + worker3.showSalaryWithExperience()
+  );
+  worker3.showSalaryWithExperience();
+  
+  worker3.setExp = 1.5;
+  console.log("New experience: " + worker3.showExp);
+  
+  console.log(
+    worker3.fullName + " salary: " + worker3.showSalaryWithExperience()
+  );
+  worker3.showSalaryWithExperience();
+  
+  function showWorkers() {
+    let workersArr = [worker1, worker2, worker3];
+    console.log("Sorted salary:");
+    workersArr.sort(function (a, b) {
+      return a.showSalaryWithExperience() - b.showSalaryWithExperience();
+    });
+    for (let i = 0; i < workersArr.length; i++) {
+      console.log(
+        workersArr[i].fullName + ": " + workersArr[i].showSalaryWithExperience()
+      );
+    }
+  }
+  showWorkers();  
+
+//task5
+// class GeometricFigure {
+//   getArea() {
+//     return 0;
+//   }
+
+//   toString() {
+//     return Object.getPrototypeOf(this).constructor.name;
+//   }
+// }
+
+// class Triangle extends GeometricFigure {
+//   constructor(sideA, sideB) {
+//     super();
+//     this.sideA = sideA;
+//     this.sideB = sideB;
+//   }
+//   getArea() {
+//     return 0.5 * sideA * sideB;
+//   }
+// }
+
+// class Square extends GeometricFigure {
+//   constructor(side) {
+//     super();
+//     this.side = side;
+//   }
+
+//   getArea() {
+//     return this.side ** 2;
+//   }
+// }
+
+// class Circle extends GeometricFigure {
+//   constructor(radius) {
+//     super();
+//     this.radius = radius;
+//   }
+
+//   getArea() {
+//     return this.radius ** 2 * Math.PI;
+//   }
+// }
+// function handleFigures(figures) {
+//   let arr = [];
+// }
+
+//доробити..
