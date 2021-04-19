@@ -13,7 +13,7 @@ setTimeout(function () {
 }, 6000);
 
 //task2
-function changeCSS() {
+function changeStyle() {
   let text = document.getElementById("text");
   text.style.color = "orange";
   text.style.fontSize = "20px";
