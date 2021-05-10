@@ -1,22 +1,21 @@
 const newListInput = document.getElementById("new-list-input");
 const newTodoItemInput = document.getElementById("new-todoitem-input");
-
 let selectedTodoList = undefined; //{id: num, name: str, todosArr: Array[{name: str, status: boolean}]} 
 
 
 // function that loads data from localStorage on page loading
 const loadLocalstorageData = () => {
-  let todoLists = JSON.parse( localStorage.getItem('todoLists'));
+  let todoLists = JSON.parse(localStorage.getItem('todoLists'));
   if (todoLists) {
     todoLists.forEach(element => {
-    // renders every btn in dropdown
-    renderTodoListBtn(element);
-  });
-  if (todoLists && todoLists.length) {
-    //renders first todoList if it exists 
-    renderSelectedList(todoLists[0].id);
+      // renders every btn in dropdown
+      renderTodoListBtn(element);
+    });
+    if (todoLists && todoLists.length) {
+      //renders first todoList if it exists 
+      renderSelectedList(todoLists[0].id);
+    }
   }
-}
 }
 //create new todo list category
 const createNewListObj = function () {
@@ -27,7 +26,7 @@ const createNewListObj = function () {
   } else {
     localStorage.setItem('lastId', '1');
   }
- 
+
   //create new todolist obj 
   const newObj = {
     id: newId,
@@ -77,7 +76,7 @@ const renderTodoListBtn = function (todoList) {
   dropdownItem.setAttribute("id", newButtonId);
   dropdownItem.innerHTML = todoList.name;
   todoListsWrapper.appendChild(dropdownItem);
-// renders selected list by click with element id 
+  // renders selected list by click with element id 
   dropdownItem.addEventListener("click", () => renderSelectedList(todoList.id));
   // todoListsWrapper.appendChild(div);
 }
@@ -131,7 +130,7 @@ const renderSelectedList = function (id) {
   div.appendChild(ul);
   todoListDiv.appendChild(div);
 }
- // update todo item status and add line-through style
+// update todo item status and add line-through style
 const checkTodo = (todoElement) => {
   const todosWrapper = document.getElementById('todos-wrapper');
   // get current  todo item index from parents element (ul)
